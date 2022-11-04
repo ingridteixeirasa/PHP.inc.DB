@@ -1,79 +1,83 @@
 <?php
 
-// Importa o arquivo de configuração:
-require($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
+// Importa a configuração do site:
+require($_SERVER['DOCUMENT_ROOT'] . '/includes/_config.php');
 
-/***********************************************
- * Todo o código PHP desta página começa aqui! *
- ***********************************************/
+/***************************************************
+ * Todos os códigos PHP desta página INICIAM aqui! *
+ ***************************************************/
 
-// Define o título da página:
-$page_title = '';
-
-// Inicializa o conteúdo da página:
-$content = '<h2>Artigos Recentes</h2>';
-
-// query para obter todos os artigos do site:
+// SQL que obtém todos os artigos:
 $sql = <<<SQL
-
-SELECT aid, title, thumbnail, resume    -- Seleciona apenas os campos necessários:
-FROM articles                           -- Da tabela articles:
-    WHERE astatus = 'online'            -- Filtra pelo status 'online':
-    AND adate <= NOW()                  -- "E" pela data de publicação menor ou igua a data atual:
-ORDER by adate DESC                     -- Ordena pela data de publicação mais recente:
-
+-- Obtém somente os campos necessários:
+SELECT aid, title, thumbnail, resume
+FROM articles
+-- Somente artigos 'online':
+WHERE astatus = 'online'
+    
+    -- E somente artigos com data no passado:
+    AND adate <= NOW()
+-- Ordenados pela data de publicação mais recente:
+ORDER BY adate DESC;
 SQL;
 
-// Executa query e armazena em '$res':
+// Executar o SQL e armazenar os resultados em '$res':
 $res = $conn->query($sql);
 
-// Se não existem artigos...
+// Se não encontrou artigos...
 if ($res->num_rows == 0) :
 
-    // Exibe mensagem para o usuário:
-    $content .= "<p>Ooooops! Nenhum artigo encontrado...";
+    // Exibe mensagem para o usuário e encerra o aplicativo:
+    $page_content .= '<p>Oooops! Nenhum artigo encontrado...</p>';
 
-// Se achou os artigos...
+// Se encontrou artigos...
 else :
 
-    // Loop para obter cada um dos artigos:
+    // Loop para obter cada artigo:
     while ($art = $res->fetch_assoc()) :
 
-        /**
-         * Formata os artigos para exibição, concatenando a visualização (HTML)
-         * de cada artigo em '$content':
-         **/
-        $content .= <<<HTML
-
+        // Formata a lista dos artigos e concatena em $page_content:
+        $page_content .= <<<HTML
 <div class="artbox" onclick="location.href='/view/?{$art['aid']}'">
     <img src="{$art['thumbnail']}" alt="{$art['title']}">
     <h3>{$art['title']}</h3>
-    <div>{$art['resume']}</div>
+    <span>{$art['resume']}</span>
 </div>
-
 HTML;
 
-    // Fim do loop dos artigos:
+    // Fim do loop:
     endwhile;
 
 endif;
 
-// Saída para o template:
-$page_content = <<<HTML
+// Define o título do documento:
+$page_title = 'Artigos recentes';
 
-<article>
-    {$content}
-</article>
+/****************************************************
+ * Todos os códigos PHP desta página TERMINAM aqui! *
+ ****************************************************/
 
-<aside>
-    Conteúdo complementar...
-</aside>
+// Cabeçalho da página HTML:
+require($_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php');
 
-HTML;
+/******************************************************
+ * Todo código HTML visível desta página COMEÇA aqui! *
+ ******************************************************/
+?>
 
-/************************************************
- * Todo o código PHP desta página termina aqui! *
- ************************************************/
+<h2><?php echo $page_title ?></h2>
+<?php echo $page_content ?>
 
-// Importa template da página:
-require($_SERVER['DOCUMENT_ROOT'] . '/inc/_template.php');
+<?php
+/*******************************************************
+ * Todo código HTML visível desta página TERMINA aqui! *
+ *******************************************************/
+
+// Rodapé da página HTML:
+require($_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php');
+?>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy

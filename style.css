@@ -1,0 +1,211 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+HTML, body, #wrap {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+html, body {
+    font-family: roboto, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    background-color: rgb(240, 181, 181);
+}
+a {
+    text-decoration: none;
+    color: rgb(0, 5, 8);
+}
+
+a:hover {
+    color: rgb(255, 255, 0);
+}
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: auto;
+    padding: 0 .5rem;
+}
+
+#wrap>header {
+    display: flex;
+    align-items: center;
+}
+
+
+#wrap>header h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+    cursor: pointer;
+}
+
+#wrap>header .mulheres {
+    -webkit-text-stroke: .001rem rgb(255, 0, 149);
+    font-size: 2.5rem;
+}
+
+#wrap>header .dot {
+    -webkit-text-stroke: 0 orange;
+    color: rgb(255, 0, 149);
+    font-size: 3rem;
+}
+
+#wrap>header .carros {
+    -webkit-text-stroke: 0 orange;
+    color: rgb(255, 0, 149);
+    font-size: 3rem;
+}
+#wrap>header i {
+    -webkit-text-stroke: 0 orange;
+    color: rgb(132, 9, 180);
+    font-size: 3rem;
+}
+
+
+/* Links */
+a {
+    color: rgb(255, 0, 149);
+    text-decoration: none;
+}
+
+/* Quando o mouse passar sobre */
+a:hover {
+    color: rgb(240, 187, 207);
+    text-decoration: none;
+}
+
+/* Fundo do site */
+body {
+    background-attachment: fixed;
+    background-color: #a5a3a3;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Wrap */
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* Limita larguras mínima e máxima da página */
+    min-width: 280px;
+    max-width: 1024px;
+
+    /* Centraliza na viewport */
+    margin: auto;
+}
+/* Cabeçalho */
+#wrap>header {
+    background-color: pink;
+    background-image: url('/img/bg04.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: .5rem;
+    margin: .5rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Logotipo */
+#wrap>header i {
+    display: block;
+    height: 2rem;
+    margin: .5rem .8rem .5rem .5rem;
+}
+
+/* Título */
+#wrap>header h1 {
+    margin: 0;
+    text-align: left;
+    font-size: 1.75rem;
+    color: rgb(37, 17, 109);
+}
+
+/* Slogan está oculto */
+#wrap>header span {
+    display: block;
+    font-size: .8rem;
+    font-weight: normal;
+}
+#wrap>header .carros {
+    color: rgb(255, 0, 149);
+    font-size: 2rem;
+    margin-top: -.5rem;
+}
+#wrap>nav {
+    background-color: rgb(236, 127, 163);
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+
+#wrap>nav a {
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#wrap>nav a:hover {
+    background-color: white;
+    color:  rgb(37, 17, 109);
+}
+#wrap>main {
+    flex-grow: 1;
+    background-color: white;
+    border-radius: .5rem;
+    padding: 0 1rem;
+}
+
+#wrap>main>h2:first-child {
+    margin: 0;
+    padding: .8rem;
+    background-color: rgb(214, 214, 214);
+    margin: 0 -1rem;
+    border-radius: .5rem .5rem 0 0;
+    font-size: 1.5rem;
+}
+#wrap>footer {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 1rem;
+    align-items: center;
+}
+
+#wrap>footer a {
+    color: rgb(255, 0, 128);
+    text-decoration: none;
+    letter-spacing: .05rem;
+}
+
+#wrap>footer a:hover {
+    color: rgb(255, 204, 110);
+}
+#wrap>footer span {
+    color: rgb(21, 5, 236);
+}
